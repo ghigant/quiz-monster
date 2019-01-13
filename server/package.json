@@ -17,11 +17,13 @@
     "@types/express": "^4.16.0",
     "@types/jsonwebtoken": "^8.3.0",
     "@types/mongoose": "^5.3.5",
+    "@types/uuid": "^3.4.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.1",
     "ts-node": "^7.0.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "uuid": "^3.3.2"
   }
 }

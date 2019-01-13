@@ -10,7 +10,7 @@ class QuestionPreview extends Component {
         const {question = {}} = this.props;
         return (
             <CenterContent>
-                {question._id ? <Question {...question}/> : null}
+                {question._id ? <Question {...question} /> : null}
             </CenterContent>
         );
     }
@@ -28,7 +28,7 @@ class QuestionEditor extends Component {
     onSave = (data) => {
         const {dispatch} = this.props;
         dispatch({
-            type: 'QUESTIONS.SAVE',
+            type: 'QUESTION.SAVE',
             payload: data
         });
     }

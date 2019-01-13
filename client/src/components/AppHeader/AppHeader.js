@@ -21,14 +21,14 @@ export default class AppHeader extends Component {
     render() {
         const {anchorEl} = this.state;
         const open = Boolean(anchorEl);
-        const { classes, title } = this.props;
+        const { classes } = this.props;
         
         return (
             <AppBar position="static">
                 <CenterContent>
                 <Toolbar>
                     <Typography variant="h5" color="inherit" className={classes.grow}>
-                        {title}
+                        Welcome {this.props.user.firstName}
                     </Typography>
                     <Button component={Link} to={'/admin/questions/new'} color="inherit">
                         NEW
@@ -39,8 +39,8 @@ export default class AppHeader extends Component {
                         onClick={this.handleMenu}
                         color="inherit"
                     >
-                <AccountCircle />
-                </IconButton>
+                        <AccountCircle />
+                    </IconButton>
                     <Menu
                         id="menu-appbar"
                         anchorOrigin={{

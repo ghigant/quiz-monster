@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "mongo": "sudo service mongod start",
+    "serve": "cd server && npm start",
+    "auth": "cd server && npm run auth",
+    "client": "cd client && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

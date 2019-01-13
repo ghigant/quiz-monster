@@ -88,7 +88,6 @@ class MUIQuestionForm extends Component {
                                 checked={this.state.answer.values.findIndex(v => v === idx) !== -1 }
                                 onChange={(event, checked) => {
                                     const selection = this.state.answer.values.filter(v => v !== idx);
-                                    console.log(selection);
                                     if (checked) {
                                         selection.push(idx);
                                     
@@ -180,6 +179,12 @@ class MUIQuestionForm extends Component {
                 code: content[0].code
             }]
         });
+    }
+
+    handleFormReset = () => {
+        this.setState({
+            
+        })
     }
 }
 
