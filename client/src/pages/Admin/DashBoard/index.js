@@ -3,7 +3,7 @@ import CenterContent from '../../../components/CenterContent';
 
 const DashBoardSceen = () => {
     return <CenterContent>
-        <h1>Admin DashBoard Page</h1>
+        <h1>Admin DashBoard</h1>
     </CenterContent>;
 }
 

@@ -1,101 +1,60 @@
 import React, { Component } from 'react';
-
+import {connect} from 'react-redux';
 import CenterContent from '../../../components/CenterContent';
+import SelectableQuestionList from '../../../components/QuestionList/SelectableQuestionList';
+import QuizInfoForm from '../../../components/QuizInfoForm';
 import {
-    Stepper,
-    Step,
-    StepLabel, 
-    Card,
-    CardContent,
-    CardActions,
-    Button,
-    Typography,
-    FormGroup,
-    TextField,
-    Grid,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
-    OutlinedInput
-}from '@material-ui/core';
+    Stepper, Step, StepLabel, 
+    Card, CardContent, CardActions,
+    Button
+} from '@material-ui/core';
 
 const steps = [
     'General Info',
     'Questions',
-    'Settings',
-    'Preview'
+    'Settings'
 ];
 
 const stepsContent = [
     (props) => {
-       return (
-           <form noValidate autoComplete="off">
-                <Typography variant={'h5'}>{steps[props.index]}</Typography>
-                <FormGroup component={'fieldset'}>
-                    <TextField 
-                        label={'Name'}
-                        margin="normal"
-                        variant="outlined"
-                    />
-                    <TextField
-                        multiline
-                        label="Description"
-                        placeholder={'Short description'}
-                        margin="normal"
-                        variant="outlined"
-                    />
-                    <Grid container spacing={16}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                fullWidth
-                                label="Number"
-                                value={props.number}
-                                type="number"
-                                margin="normal"
-                                variant="outlined"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <FormControl variant="outlined">
-                                <InputLabel>Age</InputLabel>
-                                <Select
-                                    value={'random'}
-                                    input={
-                                        <OutlinedInput
-                                            labelWidth={32}
-                                            name="age"
-                                            id="outlined-age-simple"
-                                        />
-                                    }
-                                >
-                                    <MenuItem value={'random'}>Random</MenuItem>
-                                    <MenuItem value={'manually'}>Manually</MenuItem>
-                                </Select>
-                            </FormControl>
-                        </Grid>
-                    </Grid>
-                </FormGroup>
-           </form>
-       )
+       return <QuizInfoForm {...props} title={steps[props.index]}/>;
     },
     (props) => {
-        return <h1>{props.title}</h1>
+        return (
+            <SelectableQuestionList 
+                questions={props.questions} 
+                onSelect={props.onSelect}
+            />
+        );
      },
      (props) => {
         return <h1>{props.title}</h1>
-     },
-     () => {
-        return <h1>Preview</h1>
      }
+];
 
+const stepValidators = [
+    (model = {}) => {
+        const {name = ''} = model;
+        return name && name.trim().length > 0
+    },
+    (model = []) => {
+        return model.length > 5
+    }
 ];
 
 class QuizStepper extends Component {
     state = {
         activeStep: 0,
-        questionsNumber: 20
+        info: {}
     }
+
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch({
+            type: 'QUESTIONS.REQUEST'
+        });
+    }
+
     render() {
         const {activeStep} = this.state;
         return (
@@ -115,8 +74,11 @@ class QuizStepper extends Component {
                     <CardContent>
                         {stepsContent[activeStep]({
                             index: activeStep,
-                            number: this.state.questionsNumber,
-                            title: `Hello ${activeStep}`
+                            title: `Hello ${activeStep}`,
+                            onFormChanged: this.handleInfoUpdates,
+                            onSelect: this.handleSelectionChange,
+                            ...this.props,
+                            
                         })}
                     </CardContent>
                     <CardActions>
@@ -139,15 +101,39 @@ class QuizStepper extends Component {
     }
 
     handleNext = () => {
+        const isValid = stepValidators[this.state.activeStep](this.state.info);
+        if (isValid) {
+            this.next();
+        }
+    }
+
+    next() {
         this.setState({
             activeStep: this.state.activeStep + 1
         })
     }
+
     handleBack = () => {
         this.setState({
             activeStep: this.state.activeStep - 1
         })
     }
+
+    handleInfoUpdates = (data) => {
+        this.setState({
+            info: {...data}
+        })
+    }
+
+    handleSelectionChange = () => {
+        this.setState({
+            selection: []
+        })
+    }
 }  
 
-export default QuizStepper;
+export default connect(
+    (state) => ({
+        questions: state.questions.data
+    })
+)(QuizStepper);

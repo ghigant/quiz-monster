@@ -21,6 +21,8 @@ class MUIQuestionForm extends Component {
         }],
         responses: [{
             text: ''
+        }, {
+            text: ''
         }]
     };
     render() {
@@ -42,11 +44,8 @@ class MUIQuestionForm extends Component {
                                 variant="outlined"
                                 InputProps={{
                                     className: classes.textField,
-                                    classes: {
-                                        root: 'padding: 0'
-                                    }
                                 }}
-                                value={this.state.content[0].text}
+                                value={this.state.content[idx].text}
                                 onChange={this.handleContentTextChange}
                             />
                     <FormLabel required>Code</FormLabel>
@@ -54,6 +53,7 @@ class MUIQuestionForm extends Component {
                         value={''}
                         language={'css'}
                         padding={'10px 5px'}
+                        maring={10}
                         onChange={(code) => {
                             this.setState({
                                 content: [{
@@ -132,6 +132,7 @@ class MUIQuestionForm extends Component {
                 </CardContent>
                 <CardActions>
                     <Button onClick={this.handleSave}>Save</Button>
+                    <Button onClick={this.handleFormReset}>Reset</Button>
                 </CardActions>
             </Card>
             
@@ -183,17 +184,23 @@ class MUIQuestionForm extends Component {
 
     handleFormReset = () => {
         this.setState({
-            
+            answer: {
+                values: [],
+                type: 'single'
+            },
+            content: [{
+                text: '',
+                code: null
+            }],
+            responses: [{
+                text: ''
+            }]
         })
     }
 }
 
 
 const styles = theme => ({
-    // textField: {
-    //     paddingTop: 0,
-    //     paddingBottom: 0
-    // }
 })
 
 export default withStyles(styles)(MUIQuestionForm);

@@ -31,8 +31,9 @@ export default (props) => {
                 })
                 }
             </Grid>
-            
-            <Divider style={{pading: '3px 0'}} />
+            <Grid item xs={12}>
+                <Divider />
+            </Grid>
             
             <Grid item xs={12} className={'QuestionAnswers'}>
                 <Answers type={props.answer.type} answers={props.responses}/>

@@ -30,7 +30,7 @@ export default class CodeEditor extends Component {
                         highlight={this.highlight}
                         style={{
                             fontFamily: '"Fira code", "Fira Mono", monospace',
-                            fontSize: 14
+                            fontSize: 16
                         }}
                 />
                 )

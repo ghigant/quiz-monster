@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import CenterContent from '../../../components/CenterContent';
 import Question from '../../../components/Question';
-import QuestionForm from '../../../components/QuestionForm';
+import {QuestionForm} from '../../../components/QuestionForm';
 
 class QuestionPreview extends Component {
     render() {
@@ -46,4 +46,4 @@ export default connect(
             question: state.questions.data.find(q => q._id === id)
         };
     }
-)(QuestionEditorScreen)
+)(QuestionEditorScreen);

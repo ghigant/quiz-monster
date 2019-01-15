@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 import { authentication } from './reducers/authentication';
 import quiz from './reducers/quiz';
@@ -23,7 +24,8 @@ const store = createStore(
     combineReducers({
         authentication, 
         quiz, 
-        questions
+        questions,
+        form: reduxFormReducer
     }), 
     composeWithDevTools(
         applyMiddleware(...middlewares)

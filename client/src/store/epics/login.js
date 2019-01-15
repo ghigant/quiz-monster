@@ -7,10 +7,10 @@ import {LOGIN, LOGOUT, setProgressState} from '../reducers/authentication';
 const loginEpic = $action$ => 
     $action$.pipe(
         ofType(LOGIN),
-        switchMap((action) => concat([
+        switchMap((action) => concat(
             of(setProgressState(true)),
             of(setProgressState(false))
-        ]))
+        ))
     );
 
 const logoutEpic = ($action$) => {
