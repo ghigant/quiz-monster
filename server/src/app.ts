@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
 import {Question} from './models/Question';
+import {Quiz} from './models/Quiz';
 
 const port = 8080;
 const host = '0.0.0.0';
@@ -15,13 +16,17 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.get('/quizzes', async (req, res) => {
+    const quizzes = await Quiz.find({}).select('-questions').exec();
+    res.json(quizzes);
+});
+
 app.get('/quiz', async (req, res) => {
     const quiz = await Question.find({}).exec();
     res.json(quiz);
 });
 
 app.post('/admin/question', (req, res) => {
-    console.log(req.body);
     const question = new Question({
         ...req.body
     });

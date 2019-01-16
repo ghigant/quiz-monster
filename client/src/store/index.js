@@ -5,10 +5,12 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { authentication } from './reducers/authentication';
 import quiz from './reducers/quiz';
 import questions from './reducers/questions';
+import {reducer as quizzes} from './reducers/quizzes';
 
 import apiMiddleware from './middlewares/api';
 import loginMiddleware from './middlewares/login';
 import quizMiddleware from './middlewares/quiz';
+import quizzesMiddleware from './middlewares/quizzes';
 import questionsMiddleware from './middlewares/questions';
 import questionMiddleware from './middlewares/question';
 
@@ -17,7 +19,8 @@ const middlewares = [
     loginMiddleware,
     quizMiddleware,
     questionsMiddleware,
-    questionMiddleware
+    questionMiddleware,
+    quizzesMiddleware,
 ];
 
 const store = createStore(
@@ -25,6 +28,7 @@ const store = createStore(
         authentication, 
         quiz, 
         questions,
+        quizzes,
         form: reduxFormReducer
     }), 
     composeWithDevTools(

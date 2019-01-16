@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import {connect} from 'react-redux';
+import {fetchQuzzes} from '../../store/reducers/quizzes';
+
 import QuizCard from '../../components/QuizCard';
 import CenterContent from '../../components/CenterContent';
 
-const quiz = {
-    id: 1004,
-    icon: 'TW',
-    subtitle: 'Expire at: 01/19/2019 18:00',
-    title: '[TW] Final Evaluation Quiz'
-};
+class HomeContent extends Component {
+    componentDidMount() {
+        this.props.fetchQuzzes();
+    }
+    render() {
+        return (
+            <CenterContent>
+                {
+                    this.props.quizzes.map((quiz) => {
+                        return <QuizCard quiz={quiz} />;
+                    })
+                }
+            </CenterContent>
+        );
+    }
+}
 
-export default () => (
-    <CenterContent>
-        <QuizCard quiz={quiz} />
-    </CenterContent>
-)
+export default connect(
+    (state) => ({
+        quizzes: state.quizzes.map((row) => ({
+            id: row._id,
+            title: row.name,
+            subtitle: row.description 
+        }))
+    }),
+    dispatch => ({
+        fetchQuzzes: () => dispatch(fetchQuzzes())
+    })
+)(HomeContent);

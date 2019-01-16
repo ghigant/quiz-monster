@@ -4,7 +4,7 @@ import Content from '../../containers/HomeContent';
 
 export default () => (
     <>
-        <AppHeader title={'Welcome, Valentin'}/>
+        <AppHeader />
         <Content />
     </>
 );

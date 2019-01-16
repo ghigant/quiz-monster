@@ -1,7 +1,7 @@
 import {Schema} from 'mongoose';
 import {quizConnection as connection} from './connections';
 
-const questionSchema = new Schema({
+export const QuestionSchema = new Schema({
     content: [{
         text: String,
         code: String
@@ -20,4 +20,4 @@ const questionSchema = new Schema({
     timestamps: true
 });
 
-export const Question = connection.model('Question', questionSchema);
+export const Question = connection.model('Question', QuestionSchema);
