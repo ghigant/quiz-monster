@@ -12,8 +12,6 @@ const populate = () => {
                 }))
             };
             const question = new Question(payload);
-
-            console.log(payload);
             return question.save();
         })
     )

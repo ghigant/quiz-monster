@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 
 export const REQUEST = 'QUIZ.REQUEST';
 export const QUIZ_SET =  'QUIZ.SET';
+export const SET_RESULT = 'QUIZ.SET_RESULT'
 
 
 export const setQuiz = (payload = {}) => ({
@@ -18,6 +19,18 @@ const data = (state = null, action) => {
     }
 };
 
+const results = (state = {}, action) => {
+    if (action.type === SET_RESULT) {
+        return {
+            ...state,
+            [action.payload.id]: action.payload.response
+        }
+    }
+
+    return state;
+}
+
 export default combineReducers({
-    data
+    data,
+    results
 });

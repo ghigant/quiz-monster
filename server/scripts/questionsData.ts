@@ -1,11 +1,11 @@
 export const data = [{
     content: [{
+        lang: 'html',
         text: 'Given the HTML below',
         code: `<ul class="shopping-list" id="awesome">
     <li><span>Milk</span></li>
     <li class="favorite" id="must-buy"><span class="highlight">Sausage</span></li>
-</ul>`,
-        language: 'html'
+</ul>`
     }, {
         text: 'What is the color of the text Sausage ?',
         code: `ul#awesome #must-buy {
@@ -14,7 +14,7 @@ export const data = [{
 .favorite span {
     color: blue!important;
 }`,
-    language: 'css'
+    lang: 'css'
     }],
     answer: {
         type: 'single',
@@ -75,7 +75,7 @@ export const data = [{
 </head>
 <body>
 </html>`,
-    language: 'html'
+    lang: 'html'
     }],
     answer: {
         type: 'multiple',
@@ -134,7 +134,7 @@ export const data = [{
 <!-- b) --> <a>http://www.w3schools.com</a>
 <!-- c) --> <a name="http://www.w3schools.com">W3Schools.com</a>
 <!-- d) --> <a href="http://www.w3schools.com">W3Schools</a>`,
-        language: 'html'
+        lang: 'html'
     }],
     answer: {
         type: 'single',

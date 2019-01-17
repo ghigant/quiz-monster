@@ -5,10 +5,7 @@ export const QuestionSchema = new Schema({
     content: [{
         text: String,
         code: String,
-        language: {
-            type: String,
-            enum: ['html', 'css', 'javascript', 'php', 'sql']
-        }
+        lang: String
     }],
     answer: {
         type: {

@@ -13,6 +13,7 @@ import quizMiddleware from './middlewares/quiz';
 import quizzesMiddleware from './middlewares/quizzes';
 import questionsMiddleware from './middlewares/questions';
 import questionMiddleware from './middlewares/question';
+import resultsMiddleware from './middlewares/results';
 
 const middlewares = [
     apiMiddleware,
@@ -21,6 +22,7 @@ const middlewares = [
     questionsMiddleware,
     questionMiddleware,
     quizzesMiddleware,
+    resultsMiddleware
 ];
 
 const store = createStore(

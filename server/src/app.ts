@@ -21,9 +21,26 @@ app.get('/quizzes', async (req, res) => {
     res.json(quizzes);
 });
 
-app.get('/quiz', async (req, res) => {
-    const quiz = await Question.find({}).exec();
-    res.json(quiz);
+app.get('/quiz/:id', async (req, res) => {
+    const {id} = req.params;
+    const quiz: any = await Quiz.findOne({_id: id}).select('-').exec();
+    const response = {
+        ...quiz.toJSON(),
+        questions: quiz.questions.map((q: any) => ({
+            ...q.toJSON(),
+            answer: {
+                type: q.answer.type
+            }
+        }))
+    };
+    res.json(response);
+});
+
+app.post('/quiz/:id/result', async (req, res) => {
+    const {id} = req.params;
+    const quiz: any = await Quiz.findOne({_id: id}).exec();
+    
+    res.json({});
 });
 
 app.post('/admin/question', (req, res) => {

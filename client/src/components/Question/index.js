@@ -22,7 +22,7 @@ export default (props) => {
                             {item.code && (
                                 <SyntaxHighlighter
                                     readOnly={true}
-                                    language={idx ? 'css': 'html'}
+                                    language={item.lang}
                                     value={item.code.trim()}
                                 />
                             )}

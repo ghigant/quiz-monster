@@ -128,7 +128,7 @@ class QuizStepper extends Component {
     handleSelectionChange = () => {
         this.setState({
             selection: []
-        })
+        });
     }
 }  
 

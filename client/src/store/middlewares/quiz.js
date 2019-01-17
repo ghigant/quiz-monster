@@ -11,7 +11,7 @@ export default store => next => action => {
             type: `${API_PREFIX}.${API_REQUEST}`,
             payload: {
                 meta: {
-                    url: '//localhost:8080/quiz',
+                    url: `//localhost:8080/quiz/${action.payload.id}`,
                     namespace
                 }
             }
