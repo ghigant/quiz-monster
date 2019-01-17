@@ -4,8 +4,8 @@ import SingleAnswer from './SingleAnswer';
 import MultipleAnswers from './MultipleAnswers';
 
 
-export default ({type, answers}) => {
-    return type === 'single' ? 
-        <SingleAnswer answers={answers} /> : 
-        <MultipleAnswers answers={answers} />;
+export default ({type, answers, onSelect}) => {
+    return type === 'single' ?
+        <SingleAnswer answers={answers} onSelect={onSelect}/> :
+        <MultipleAnswers answers={answers} onSelect={onSelect}/>;
 }

@@ -8,6 +8,7 @@ import Answers from '../Answers';
 
 import {default as SyntaxHighlighter} from '../CodeEditor';
 
+
 export default (props) => {
     return (
         <Grid container>
@@ -19,12 +20,11 @@ export default (props) => {
                                 {item.text}
                             </Typography>
                             {item.code && (
-                                <SyntaxHighlighter 
+                                <SyntaxHighlighter
                                     readOnly={true}
-                                    language={idx ? 'css': 'html'} 
+                                    language={idx ? 'css': 'html'}
                                     value={item.code.trim()}
                                 />
-                                    
                             )}
                         </div>
                     )
@@ -34,9 +34,8 @@ export default (props) => {
             <Grid item xs={12}>
                 <Divider />
             </Grid>
-            
             <Grid item xs={12} className={'QuestionAnswers'}>
-                <Answers type={props.answer.type} answers={props.responses}/>
+                <Answers type={props.answer.type} answers={props.responses} onSelect={props.onSelect}/>
             </Grid>
         </Grid>
     );

@@ -11,11 +11,12 @@ class HomeContent extends Component {
         this.props.fetchQuzzes();
     }
     render() {
+        console.log(this.props);
         return (
             <CenterContent>
                 {
                     this.props.quizzes.map((quiz) => {
-                        return <QuizCard quiz={quiz} />;
+                        return <QuizCard key={`quiz-${quiz._id}`} quiz={quiz} />;
                     })
                 }
             </CenterContent>
@@ -28,7 +29,7 @@ export default connect(
         quizzes: state.quizzes.map((row) => ({
             id: row._id,
             title: row.name,
-            subtitle: row.description 
+            subtitle: row.description
         }))
     }),
     dispatch => ({

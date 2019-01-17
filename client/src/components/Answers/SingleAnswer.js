@@ -14,18 +14,20 @@ export default class SingleAnswer extends Component {
         return (
             <RadioGroup value={this.state.selection} onChange={this.handleChange}>
                 {(answers.map(({_id, text}) => (
-                    <FormControlLabel 
+                    <FormControlLabel
                         key={`answer-${_id}`}
                         value={`${_id}`}
                         control={<Radio />}
-                        label={text} 
-                    />    
+                        label={text}
+                    />
                 )))}
             </RadioGroup>
         )
     }
 
     handleChange = (event) => {
-        this.setState({ selection: event.target.value });
+        const {value} = event.target;
+        this.setState({ selection: value });
+        this.props.onSelect(value);
     }
 }

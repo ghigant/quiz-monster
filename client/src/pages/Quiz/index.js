@@ -9,7 +9,7 @@ const QuizPage = (props) => (
     <>
         <AppHeader title={'[TW] Final Evaluation Quiz'} />
         <CenterContent>
-            <Quiz quiz={props.quiz}/>
+            <Quiz id={props.match.params.id} quiz={props.quiz}/>
         </CenterContent>
     </>
 );

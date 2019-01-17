@@ -23,7 +23,7 @@ const QuizCard = ({quiz, classes}) => {
             </CardActions>
         </Card>
     </div>
-    )   
+    );
 };
 
 export default QuizCard;

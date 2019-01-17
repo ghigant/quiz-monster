@@ -11,29 +11,30 @@ class MultipleAnswers extends Component {
     }
 
     render() {
-        const {answers} = this.props; 
-        
+        const {answers} = this.props;
         return (
             <FormGroup>
                 {(answers.map(({_id, text}) => (
-                    <FormControlLabel 
+                    <FormControlLabel
                         key={`answer-${_id}`}
                         value={_id}
                         control={
-                            <Checkbox 
-                                onChange={this.handleChange(_id)} 
+                            <Checkbox
+                                onChange={this.handleChange(_id)}
                                 checked={this.state[_id]}
                             />
                         }
-                        label={text} 
-                    />    
+                        label={text}
+                    />
                 )))}
             </FormGroup>
         );
     }
 
     handleChange = (id) => (event) => {
-        this.setState({ ...this.state, [id]: event.target.checked });
+        const selection = {...this.state, [id]: event.target.checked};
+        this.setState(selection);
+        this.props.onSelect(Object.keys(selection).filter(key => selection[key]));
     }
 
     _getInitialState() {
