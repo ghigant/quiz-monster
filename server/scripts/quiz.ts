@@ -9,8 +9,9 @@ const questions = data.map(entry => {
             text: response
         }))
     };
+    console.log(payload);
     const question = new Question(payload);
-    
+
     return question;
 });
 

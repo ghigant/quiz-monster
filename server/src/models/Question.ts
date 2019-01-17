@@ -4,7 +4,11 @@ import {quizConnection as connection} from './connections';
 export const QuestionSchema = new Schema({
     content: [{
         text: String,
-        code: String
+        code: String,
+        language: {
+            type: String,
+            enum: ['html', 'css', 'javascript', 'php', 'sql']
+        }
     }],
     answer: {
         type: {

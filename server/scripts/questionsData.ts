@@ -4,7 +4,8 @@ export const data = [{
         code: `<ul class="shopping-list" id="awesome">
     <li><span>Milk</span></li>
     <li class="favorite" id="must-buy"><span class="highlight">Sausage</span></li>
-</ul>`
+</ul>`,
+        language: 'html'
     }, {
         text: 'What is the color of the text Sausage ?',
         code: `ul#awesome #must-buy {
@@ -12,7 +13,8 @@ export const data = [{
 }
 .favorite span {
     color: blue!important;
-}`
+}`,
+    language: 'css'
     }],
     answer: {
         type: 'single',
@@ -72,7 +74,8 @@ export const data = [{
 </title>
 </head>
 <body>
-</html>`
+</html>`,
+    language: 'html'
     }],
     answer: {
         type: 'multiple',
@@ -130,7 +133,8 @@ export const data = [{
         code: `<!-- a) --> <a url="http://www.w3schools.com">W3Schools.com</a>
 <!-- b) --> <a>http://www.w3schools.com</a>
 <!-- c) --> <a name="http://www.w3schools.com">W3Schools.com</a>
-<!-- d) --> <a href="http://www.w3schools.com">W3Schools</a>`
+<!-- d) --> <a href="http://www.w3schools.com">W3Schools</a>`,
+        language: 'html'
     }],
     answer: {
         type: 'single',
